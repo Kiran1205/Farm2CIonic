@@ -1,0 +1,7 @@
+{
+  "name": "farm2c",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

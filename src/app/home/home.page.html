@@ -1,0 +1,37 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="danger">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Home</ion-title>
+    <ion-button color="danger"  class="auto-hide-button" slot="end" (click)="onBasketClick()">
+      <ion-badge color="light" class="badge-class">2</ion-badge>
+      <ion-icon slot="icon-only" name="basket-outline"></ion-icon>
+  </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <ion-list>
+    <ion-list-header>
+      <h4 style="font-weight: bold;font-style: italic;">Poultry</h4>      
+    </ion-list-header>
+  <ion-item>
+    <ion-thumbnail  slot="start">
+      <img src="assets/images/chicken.jpg"  class="your-img">
+    </ion-thumbnail>    
+    <ion-label>
+      <h2>Chicken - Curry Cut</h2>
+      <h4>WithOut Skin </h4>      
+      <ion-item lines="none" >       
+        <ion-select value="1" style="font-size:small">
+          <ion-select-option value="1">1 KG</ion-select-option>
+          <ion-select-option value="2">1/2 KG</ion-select-option>
+        </ion-select>
+      </ion-item>    
+      <h3 style="font-weight: bold">Price : 170</h3>
+    </ion-label>     
+    <ion-button color="danger">Add</ion-button>    
+  </ion-item>  
+</ion-list>
+</ion-content>

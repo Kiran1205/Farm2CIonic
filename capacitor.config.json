@@ -1,0 +1,13 @@
+{
+  "appId": "io.ionic.starter",
+  "appName": "farm2c",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {}
+}

@@ -1,0 +1,50 @@
+
+  
+  #container {
+    text-align: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  #container strong {
+    font-size: 20px;
+    line-height: 26px;
+  }
+  
+  #container p {
+    font-size: 16px;
+    line-height: 22px;
+    color: #8c8c8c;
+    margin: 0;
+  }
+  
+  #container a {
+    text-decoration: none;
+  }
+  ion-thumbnail
+  {
+  width:6em;
+  height:6em;
+  img
+  {
+  width:auto !important;
+  height:auto !important;
+  }
+}
+  .your-img {
+    border-radius: 10px !important;
+    overflow: hidden;
+  }
+  .auto-hide-button{
+    --box-shadow: none !important;
+  }
+  .badge-class{
+    --padding-top: 1px;
+    --padding-end: 1px;
+    --padding-bottom: 1px;
+    --padding-start: 1x;
+    border-radius: 4px;
+  }
