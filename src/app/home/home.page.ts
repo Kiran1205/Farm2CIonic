@@ -1,5 +1,6 @@
 import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { NavigationExtras } from '@angular/router';
 import { LoadingController, MenuController, NavController } from '@ionic/angular';
 import { CommonToast } from '../CommonToast';
 import { HomeService } from '../services/homeservice';
@@ -10,19 +11,25 @@ import { HomeService } from '../services/homeservice';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-
-  itemsDetail : any;
-  constructor(private nav:NavController, 
+  map = new Map<number, number>();
+  Basket = new Map<number, number>();
+  itemsListDetails : any;
+  basketcount = 0;
+  username : any;
+  UserInfoID : any;
+   constructor(private nav:NavController, 
     private menuCtrl: MenuController,
     private loadingController: LoadingController,
     private homeservice : HomeService,
     private commonToast : CommonToast) { 
-
+      this.UserInfoID = localStorage.getItem("UserInfoID");
+      this.username = localStorage.getItem("UserName");
     }
 
   ngOnInit() {
+    
   }
-  async chittihomepageloading(){   
+  async homepageloading(){   
     const loader =  await this.loadingController.create({
        message: 'Loading..',
       spinner: 'circles',
@@ -30,8 +37,7 @@ export class HomePage implements OnInit {
      });
     await loader.present().then( () => {
       this.homeservice.getItems().subscribe((result) => {
-        this.itemsDetail = result; 
-        console.log( this.itemsDetail);  
+        this.itemsListDetails = result;       
         loader.dismiss();
       },(error : HttpResponse<any>) => {         
             this.commonToast.presentToast(error.statusText);
@@ -40,13 +46,30 @@ export class HomePage implements OnInit {
     });
 
    }
-
-  onBasketClick(){   
-    this.nav.navigateForward('basket');
+   getselectedpriceId(itemPriceevent, itemId){
+       this.map.set(itemId, itemPriceevent.detail.value);
   }
-
-  ionViewWillEnter(){
-    this.chittihomepageloading().then();    
+  onBasketClick(){ 
+    let navigationExtras: NavigationExtras = {
+      queryParams: {          
+        selectedItemsList: this.Basket
+      } };  
+    this.nav.navigateForward('basket',navigationExtras);
+  }
+  
+  addtoBasket(selecteditemid){
+     const intVAL = this.map.get(selecteditemid);
+    if (!isNaN(intVAL)) {
+      this.Basket.set(selecteditemid, this.map.get(selecteditemid));
+      this.basketcount = this.Basket.size;      
+    }
+   
+  }
+  ionViewDidEnter() {       
+    this.menuCtrl.enable(true);    
+  }
+  ionViewWillEnter(){    
+    this.homepageloading().then();    
    }
 
 }

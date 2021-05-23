@@ -1,0 +1,19 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="danger">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Address</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item color="light" lines="none">
+      <ion-label>No Address found</ion-label>     
+    </ion-item>
+    <ion-button id="changeText" color="danger" expand="block" (click)="addAddress()">
+      Add Address
+     </ion-button>
+  </ion-list> 
+</ion-content>

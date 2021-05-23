@@ -5,33 +5,33 @@
     </ion-buttons>
     <ion-title>Home</ion-title>
     <ion-button color="danger"  class="auto-hide-button" slot="end" (click)="onBasketClick()">
-      <ion-badge color="light" class="badge-class">2</ion-badge>
+      <ion-badge color="light" class="badge-class">{{basketcount}}</ion-badge>
       <ion-icon slot="icon-only" name="basket-outline"></ion-icon>
   </ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content fullscreen>
-  <ion-list>
+  <ion-list *ngFor="let itemcategory of itemsListDetails">
     <ion-list-header>
-      <h4 style="font-weight: bold;font-style: italic;">Poultry</h4>      
+      <h4 style="font-weight: bold;font-style: italic;">{{itemcategory.categoryName}}</h4>      
     </ion-list-header>
-  <ion-item>
+  <ion-item *ngFor="let item of itemcategory.itemDtoList">
     <ion-thumbnail  slot="start">
-      <img src="assets/images/chicken.jpg"  class="your-img">
+      <img src="data:image/jpeg;base64,{{item.itemImage}}"  class="your-img">
     </ion-thumbnail>    
     <ion-label>
-      <h2>Chicken - Curry Cut</h2>
-      <h4>WithOut Skin </h4>      
+      <h2>{{item.itemName}}</h2>
+      <h4>{{item.description}}</h4>      
       <ion-item lines="none" >       
-        <ion-select value="1" style="font-size:small">
-          <ion-select-option value="1">1 KG</ion-select-option>
-          <ion-select-option value="2">1/2 KG</ion-select-option>
-        </ion-select>
-      </ion-item>    
-      <h3 style="font-weight: bold">Price : 170</h3>
+        <ion-select style="font-size:small" placeholder="Select Quantity" (ionChange)="getselectedpriceId($event, item.itemID)">
+          <ng-container *ngFor="let itemPrice of item.listItemPrice">
+            <ion-select-option value="{{itemPrice.itemPriceID}}">{{itemPrice.priceCode}} : Price {{itemPrice.price}} ₹</ion-select-option>           
+          </ng-container>          
+        </ion-select>        
+      </ion-item>      
     </ion-label>     
-    <ion-button color="danger">Add</ion-button>    
+    <ion-button color="danger" (click)="addtoBasket(item.itemID)">Add</ion-button>    
   </ion-item>  
 </ion-list>
 </ion-content>

@@ -14,4 +14,7 @@ export class HomeService extends BaseHttpService{
     getItems():Observable<any>    {
         return this.get('GetData',this.COMMON_JSON_HEADER_REQUEST);
     }
+    getSelectedItems(selectedList:any):Observable<any>    {
+        return this.post('GetSelectedItems',selectedList,this.COMMON_JSON_HEADER_REQUEST);
+    }
 }  

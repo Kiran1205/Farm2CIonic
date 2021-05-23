@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="danger">
+    <ion-title class="ion-text-center">Farm2C</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="loginform">
+  <ion-list>   
+    <ion-item  class="ionmargin" style="margin-top: 2em;">  
+      <ion-input type="number" placeholder="Phone Number" class="form-control" placeholder="Phone Number" formControlName="phonenumber"></ion-input>
+    </ion-item>
+    <ion-item  class="ionmargin" >  
+      <ion-input  placeholder="Password" class="form-control" placeholder="Password" formControlName="userpassword"></ion-input>
+    </ion-item> 
+    <ion-item lines="none"  class="ionmargin" >
+    <p>
+      No account ?  <a (click) ="gotoregister()"  class="create_color">Register Here</a>
+    </p>
+  </ion-item>   
+  </ion-list>
+</form>
+</ion-content>
+<ion-footer>
+
+  <ion-button id="login" color="danger"   expand="block"  [disabled]="!loginform.valid"  (click)="Login()">
+    Login
+  </ion-button>
+  
+</ion-footer>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavController } from '@ionic/angular';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -11,6 +12,15 @@ export class AppComponent {
     { title: 'My Account', url: 'myaccount', icon: 'person' },
     { title: 'Contact Us', url: 'contactus', icon: 'call-outline' }
   ];
-  
-  constructor() {}
+  username : any;
+  constructor(private nav:NavController) {
+    this.username = localStorage.getItem('UserName');
+  }
+  LogOut(){
+    localStorage.clear();
+    this.nav.navigateRoot('login');
+  }
+  ionViewDidEnter() {  
+    this.username = localStorage.getItem('UserName'); 
+  }
 }

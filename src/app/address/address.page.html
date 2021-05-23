@@ -1,0 +1,52 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="danger">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Address</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="addressForm">
+    <ion-list>
+      <ion-item-divider>
+        <ion-label>
+          Contact Details
+        </ion-label>
+      </ion-item-divider>
+      <ion-item  class="ionmargin">
+           <ion-input type="number" placeholder="Phone Number *" class="form-control" formControlName="phoneNumber"></ion-input>
+      </ion-item>    
+      <ion-item  class="ionmargin">      
+        <ion-input placeholder="Name *" class="form-control" formControlName="name"></ion-input>
+      </ion-item>    
+      
+      <ion-item-divider style="margin-top: 2em;">
+        <ion-label>
+         Address
+        </ion-label>
+      </ion-item-divider>  
+      <ion-item  class="ionmargin">  
+        <ion-input type="number" placeholder="Pin Code *" class="form-control" formControlName="pinCode"></ion-input>
+      </ion-item>
+      <ion-item  class="ionmargin">  
+        <ion-input placeholder="Address(House No,Area)*"  class="form-control" formControlName="address"></ion-input>
+      </ion-item>   
+      <ion-item  class="ionmargin">  
+        <ion-input placeholder="Locality/Town *" class="form-control" formControlName="address1"></ion-input>
+      </ion-item>
+      <ion-item  class="ionmargin">  
+        <ion-input placeholder="LandMark" class="form-control" formControlName="landMark"></ion-input>
+      </ion-item>    
+      <ion-item  class="ionmargin">  
+        <ion-input placeholder="State *" class="form-control" formControlName="state"></ion-input>
+      </ion-item>   
+    </ion-list> 
+  </form>
+</ion-content>
+<ion-footer>
+  <ion-button id="changeText" color="danger"  expand="block" [disabled] = "!addressForm.valid" (click)="Save()">
+    Save Address
+   </ion-button>
+</ion-footer>

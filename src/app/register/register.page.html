@@ -1,0 +1,37 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="danger">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Farm2C</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="registerform">
+  <ion-list> 
+    <ion-item  class="ionmargin" style="margin-top: 2em;">  
+      <ion-input  placeholder="Name" class="form-control" placeholder="Name" formControlName="username"></ion-input>
+    </ion-item>  
+    <ion-item  class="ionmargin">  
+      <ion-input type="number" placeholder="Phone Number" class="form-control" placeholder="Phone Number" formControlName="phonenumber"></ion-input>
+    </ion-item>
+    <ion-item  class="ionmargin" >  
+      <ion-input placeholder="Password" class="form-control" formControlName="userpassword"></ion-input>
+    </ion-item> 
+
+   <ion-item  class="ionmargin" *ngIf="otpSent">  
+      <ion-input  placeholder="Enterr OTP"  class="form-control" formControlName="otp" ></ion-input>
+    </ion-item>
+  </ion-list>
+</form>
+</ion-content>
+<ion-footer>
+  <ion-button id="changeText" color="danger"  expand="block" *ngIf="!otpSent"  [disabled]="!registerform.valid" (click)="SendOTP()">
+    Send OTP
+   </ion-button>
+   <ion-button *ngIf="otpSent" id="registertex" color="danger"  expand="block"   [disabled]="!registerform.valid" (click)="Register()">
+    Register
+   </ion-button>
+</ion-footer>
+<div id='sign-in-button' style="visibility: hidden"></div>

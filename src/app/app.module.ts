@@ -15,6 +15,24 @@ import { HomeService } from './services/homeservice';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonToast } from './CommonToast';
+import { CheckoutPage } from './checkout/checkout.page';
+import { AddressPage } from './address/address.page';
+import { LoginPage } from './login/login.page';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import { UserService } from './services/userService';
+import { RegisterPage } from './register/register.page';
+
+var firebaseConfig = {
+  apiKey: "AIzaSyAm-CVsUGssmWGHz9qeqDYgkJ7L2lhSU1o",
+  authDomain: "farm2c-5ec0c.firebaseapp.com",
+  projectId: "farm2c-5ec0c",
+  storageBucket: "farm2c-5ec0c.appspot.com",
+  messagingSenderId: "682377620963",
+  appId: "1:682377620963:web:3ce521cd766a52e64b44d6"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 
 @NgModule({
   declarations:[
@@ -22,7 +40,11 @@ import { CommonToast } from './CommonToast';
     HomePage,
     OrderPage,
     BasketPage,
-    ContactusPage],
+    CheckoutPage,
+    ContactusPage,
+    AddressPage,
+    LoginPage,
+    RegisterPage],
   entryComponents: [],
   imports: [
     BrowserModule,
@@ -33,7 +55,9 @@ import { CommonToast } from './CommonToast';
     AppRoutingModule,
     HttpClientModule],
   providers: [
-    HomeService,CommonToast,
+    HomeService,
+    CommonToast,
+    UserService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
